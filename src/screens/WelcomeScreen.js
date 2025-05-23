@@ -14,11 +14,13 @@ const WelcomeScreen = ({ navigation }) => {
       </View>
       
       <View style={styles.imageContainer}>
+        {/* Görsel şu an mevcut değil, ilgili paketler yüklendikten sonra eklenecek 
         <Image
           source={require('../assets/welcome.png')}
           style={styles.image}
           resizeMode="contain"
         />
+        */}
       </View>
       
       <View style={styles.contentContainer}>

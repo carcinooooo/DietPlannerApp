@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Button, Card, Chip, Divider, List, FAB, IconButton } from 'react-native-paper';
 import { theme, globalStyles } from '../styles/theme';
@@ -29,11 +29,8 @@ const DietPlanScreen = ({ navigation }) => {
     'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'
   ];
 
-  useEffect(() => {
-    loadDietPlan();
-  }, []);
-
-  const loadDietPlan = async () => {
+  // loadDietPlan fonksiyonunu useCallback ile saralım
+  const loadDietPlan = useCallback(async () => {
     try {
       setLoading(true);
       // Gerçek bir API çağrısı yerine demo fonksiyonu kullanıyoruz
@@ -45,7 +42,11 @@ const DietPlanScreen = ({ navigation }) => {
       setLoading(false);
       // Hata gösterimi
     }
-  };
+  }, [userInfo, preferences, goal]); // Sadece bu değişkenlere bağlı olacak
+
+  useEffect(() => {
+    loadDietPlan();
+  }, [loadDietPlan]); // Artık güvenli bir şekilde bağımlılık olarak ekleyebiliriz
 
   const handleRefresh = async () => {
     setRefreshing(true);
