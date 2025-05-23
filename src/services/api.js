@@ -1,7 +1,9 @@
 import axios from 'axios';
+import Config from 'react-native-config';
 
-// Normalde gerçek bir API anahtarı buraya yazılmamalı, .env dosyasında saklanmalıdır
-// Bu sadece demo amaçlıdır
+// API anahtarını Config üzerinden alıyoruz. Siz .env dosyasında tanımlamalısınız
+// const API_KEY = Config.OPENAI_API_KEY;
+// Demo amaçlı sabit değer
 const API_KEY = 'YOUR_OPENAI_API_KEY';
 const API_URL = 'https://api.openai.com/v1/chat/completions';
 
